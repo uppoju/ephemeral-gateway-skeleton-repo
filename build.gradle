@@ -20,15 +20,17 @@ buildscript {
 apply plugin: 'com.ca.apim.gateway.gateway-export-plugin'
 apply plugin: 'com.ca.apim.gateway.gateway-developer-plugin'
 
-group '<my.group.id>'
+group 'demo'
 version = '1.0.0'
 
 GatewayConnection {
     url = 'https://localhost:8443/restman'
+    userName = 'admin'
+    userPass='7layer'
 }
 
 GatewayExportConfig {
-    folderPath = '/<project-folder>'
+    folderPath = '/demo'
 }
 
 repositories {
