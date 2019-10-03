@@ -1,0 +1,30 @@
+<wsp:Policy xmlns:wsp="http://schemas.xmlsoap.org/ws/2002/12/policy" xmlns:L7p="http://www.layer7tech.com/ws/policy">
+    <wsp:All wsp:Usage="Required">
+        <L7p:JdbcQuery>
+            <L7p:ConnectionName stringValue="oracle"/>
+            <L7p:ConvertVariablesToStrings booleanValue="false"/>
+            <L7p:NamingMap mapValue="included">
+                <L7p:entry>
+                    <L7p:key stringValue="cust_last_name"/>
+                    <L7p:value stringValue="lastName"/>
+                </L7p:entry>
+                <L7p:entry>
+                    <L7p:key stringValue="cust_first_name"/>
+                    <L7p:value stringValue="firstName"/>
+                </L7p:entry>
+                <L7p:entry>
+                    <L7p:key stringValue="phone_number1"/>
+                    <L7p:value stringValue="phone"/>
+                </L7p:entry>
+            </L7p:NamingMap>
+            <L7p:SqlQuery stringValue="select cust_first_name, cust_last_name, phone_number1 from demo_customers"/>
+        </L7p:JdbcQuery>
+        <L7p:HardcodedResponse>
+            <L7p:ResponseBody><![CDATA[Oracle JDBC
+First Name: ${jdbcQuery.firstName}
+Last Name: ${jdbcQuery.lastName}
+Phone Number : ${jdbcQuery.phone}]]></L7p:ResponseBody>
+            <L7p:ResponseContentType stringValue="text/plain; charset=UTF-8"/>
+        </L7p:HardcodedResponse>
+    </wsp:All>
+</wsp:Policy>

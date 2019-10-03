@@ -4,6 +4,5 @@
  *  of the MIT license.  See the LICENSE file for details.
  */
 
-rootProject.name = 'MultiRepoGateway'
+rootProject.name = 'demo'
 
-include 'deployment',  'demo', 'test'

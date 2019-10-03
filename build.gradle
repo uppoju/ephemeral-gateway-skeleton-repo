@@ -17,36 +17,31 @@ buildscript {
     }
 }
 
-apply plugin: 'com.ca.apim.gateway.gateway-export-plugin'
-apply plugin: 'com.ca.apim.gateway.gateway-developer-plugin'
-
-group 'demo'
-version = '1.0.0'
-
-GatewayConnection {
-    url = 'https://localhost:8443/restman'
-    userName = 'admin'
-    userPass='7layer'
-}
-
-GatewayExportConfig {
-    folderPath = '/demo'
-}
-
-repositories {
-    flatDir {
-        dirs new File(project.rootDir, "lib")
+subprojects {
+    apply plugin: 'com.ca.apim.gateway.gateway-developer-plugin'
+    if (!project.name.equals('deployment')) {
+        apply plugin: 'com.ca.apim.gateway.gateway-export-plugin'
+        GatewayConnection {
+            url = 'https://localhost:8443/restman'
+            userName = 'admin'
+            userPass='7layer'
+        }
     }
-    gradlePluginPortal()
-    mavenCentral()
-    jcenter()
+
+    group 'MultiRepo'
+    version = '1.0.0'
+
+    repositories {
+        mavenLocal()
+        flatDir {
+            dirs new File(project.parent.rootDir, "lib")
+        }
+        jcenter()
+    }
 }
 
 wrapper {
     gradleVersion = '4.10'
-}
-dependencies {
-    bundle group: 'influxdb', name: 'influxdb', version: '1.0.0', ext: 'bundle'
 }
 //
 // Import task types

@@ -1,0 +1,30 @@
+test/stored procedure:
+  url: "/sp"
+  policy: "test/stored procedure"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+test/jdbc multi context:
+  url: "/multi"
+  policy: "test/jdbc multi context"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+test/jdbc test:
+  url: "/jdbcTest"
+  policy: "test/jdbc test"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
