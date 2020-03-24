@@ -1,6 +1,16 @@
-demo/demo:
+Demo:
   url: "/demo"
-  policy: "demo/demo"
+  policy: "Demo"
+  httpMethods:
+  - "DELETE"
+  - "POST"
+  - "GET"
+  - "PUT"
+  properties: {}
+  wssProcessingEnabled: false
+Test:
+  url: "/test"
+  policy: "Test"
   httpMethods:
   - "DELETE"
   - "POST"
